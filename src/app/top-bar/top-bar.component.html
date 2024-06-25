@@ -1,0 +1,36 @@
+<nav
+  class="navbar navbar-dark navbar-expand-lg px-4"
+  style="background-color: #161549"
+>
+  <a class="navbar-brand" href="#">
+    <img class="logo" src="assets/img/logo.png" alt="Pelagus 3D logo" />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link px-2" href="#">Create new part</a>
+      <a
+        class="nav-item nav-link px-2"
+        routerLink="/parts-under-review"
+        routerLinkActive="activebutton"
+        ariaCurrentWhenActive="page"
+        >Parts under review</a
+      >
+      <a class="nav-item nav-link px-2" href="#">Digital inventory</a>
+      <a class="nav-item nav-link px-2" href="#">Request for quote</a>
+      <a class="nav-item nav-link px-2" href="#">Order overview</a>
+    </div>
+  </div>
+</nav>
+<mat-progress-bar mode="determinate"></mat-progress-bar>
+<router-outlet></router-outlet>

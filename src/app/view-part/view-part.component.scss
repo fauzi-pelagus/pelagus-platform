@@ -1,0 +1,29 @@
+.img-container {
+  background-color: #80808010;
+}
+
+.img-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.mat-mdc-tab-body-content {
+  padding: 20px !important;
+}
+
+mat-expansion-panel,
+mat-expansion-panel-header,
+mat-expansion-panel-body {
+  height: fit-content !important;
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+  background-color: #fef9f3;
+  border: solid 1px #e5e5e5;
+}
+
+mat-form-field {
+  width: 100%;
+}

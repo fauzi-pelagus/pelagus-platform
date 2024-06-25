@@ -1,0 +1,32 @@
+<div class="container my-4">
+  <form>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Search for part</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Filter by</mat-label>
+          <mat-select>
+            <mat-option>OEMs</mat-option>
+            <mat-option>Part type</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Sort by</mat-label>
+          <mat-select>
+            <mat-option>Name (A - Z)</mat-option>
+            <mat-option>Date added (Latest to earliest)</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-card></app-card>

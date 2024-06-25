@@ -1,0 +1,42 @@
+<div class="container container-grid my-4">
+  @for (product of products; track $index) {
+  <mat-card>
+    <div class="img-container p-4">
+      <img mat-card-image [src]="product.image" alt="product image" />
+    </div>
+    <div class="p-4">
+      <mat-chip-set class="mb-4">
+        <mat-chip>{{ product.status }}</mat-chip>
+      </mat-chip-set>
+
+      <mat-card-title class="mb-2">
+        {{ product.title }}
+      </mat-card-title>
+
+      <mat-card-subtitle class="mb-4">
+        {{ product.productNumber }}
+      </mat-card-subtitle>
+
+      <mat-card-content class="p-0">
+        <p>{{ product.description }}</p>
+      </mat-card-content>
+
+      <mat-divider class="my-4"></mat-divider>
+
+      <mat-card-footer>
+        <button
+          mat-flat-button
+          color="primary"
+          routerLink="/view-part"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          Manage
+        </button>
+      </mat-card-footer>
+    </div>
+  </mat-card>
+  }
+</div>
+
+<router-outlet></router-outlet>

@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+$my-theme: mat.define-theme(
+  (
+    typography: (
+      brand-family: "Mulish",
+      plain-family: "Mulish",
+    ),
+  )
+);
+
+html {
+  // Emit theme-dependent styles for common features used across multiple components.
+  @include mat.all-component-typographies($my-theme);
+}
+
+body {
+  background-color: #f2f2f2 !important;
+}
+
+* {
+  font-family: "Mulish", sans-serif;
+}
+
+.btn {
+  color: white !important;
+}
+
+$primary: #003978;
+$secondary: #f7941d;
+$success: #12af6d;
+
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import "../node_modules/bootstrap/scss/bootstrap";

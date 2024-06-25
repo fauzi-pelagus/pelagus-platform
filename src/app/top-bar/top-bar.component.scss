@@ -1,0 +1,23 @@
+.logo {
+  height: 100%;
+  max-width: 300px;
+  object-fit: contain;
+}
+
+.navbar-collapse {
+  justify-content: center;
+}
+
+.navbar-nav {
+  gap: 1.5rem;
+}
+
+.nav-item,
+.nav-item.active {
+  color: white;
+}
+
+.nav-item.active {
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+}
