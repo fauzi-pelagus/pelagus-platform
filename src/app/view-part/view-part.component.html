@@ -42,69 +42,13 @@
           <mat-tab label="Discussion">
             <div class="row m-4">
               <div class="col p-0">
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header class="p-4">
-                    <div class="row flex-column">
-                      <div class="col mb-4">
-                        <mat-chip class="mr-4">Unresolved</mat-chip>
-                        <button mat-icon-button>
-                          <mat-icon>edit</mat-icon>
-                        </button>
-                      </div>
-                      <div class="col mb-2">
-                        <mat-panel-title
-                          ><b>Clarification topic 1</b></mat-panel-title
-                        >
-                      </div>
-                      <div class="col">
-                        <mat-panel-description>
-                          Lorem ipsum dolor sit amet consectetur. Nec iaculis
-                          lectus volutpat vitae sed sit semper posuere. Semper
-                          ultrices integer neque tristique magna ultricies. Enim
-                          parturient consequat gravida varius dignissim urna
-                          eget. Auctor a gravida lobortis iaculis quam est.
-                        </mat-panel-description>
-                      </div>
-                    </div>
-                  </mat-expansion-panel-header>
-                  <div class="row pb-4">
-                    <div class="col">
-                      <mat-divider></mat-divider>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-10">
-                      <mat-form-field appearance="outline">
-                        <mat-label>Add a comment...</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                    </div>
-
-                    <div class="col">
-                      <button mat-stroked-button="primary">Send</button>
-                    </div>
-                  </div>
-                </mat-expansion-panel>
+                <app-discussion-thread></app-discussion-thread>
               </div>
             </div>
           </mat-tab>
 
-          <mat-tab label="Part details">
-            <div class="row m-4">
-              <div class="col p-0">
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header class="p-4">
-                    <div class="row">
-                      <div class="col">
-                        <mat-panel-title><b>Part details</b></mat-panel-title>
-                      </div>
-                    </div>
-                  </mat-expansion-panel-header>
-                </mat-expansion-panel>
-              </div>
-            </div>
-          </mat-tab>
+          <mat-tab label="Part details"> Part details </mat-tab>
+
           <mat-tab label="Change log"> Change log </mat-tab>
         </mat-tab-group>
       </div>

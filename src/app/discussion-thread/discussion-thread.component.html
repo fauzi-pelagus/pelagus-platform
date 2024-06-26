@@ -1,0 +1,39 @@
+@for (thread of threads; track $index){
+<mat-expansion-panel class="mb-4">
+  <mat-expansion-panel-header class="p-4">
+    <div class="row flex-column">
+      <div class="col mb-4">
+        <mat-chip id="Unresolved" class="mr-4">{{ thread.status }}</mat-chip>
+      </div>
+      <div class="col mb-2">
+        <mat-panel-title
+          ><b>{{ thread.title }}</b></mat-panel-title
+        >
+      </div>
+      <div class="col">
+        <mat-panel-description>
+          {{ thread.summary }}
+        </mat-panel-description>
+      </div>
+    </div>
+  </mat-expansion-panel-header>
+  <div class="row pb-4">
+    <div class="col">
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10">
+      <mat-form-field appearance="outline">
+        <mat-label>Add a comment...</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <button mat-stroked-button="primary">Send</button>
+    </div>
+  </div>
+</mat-expansion-panel>
+}

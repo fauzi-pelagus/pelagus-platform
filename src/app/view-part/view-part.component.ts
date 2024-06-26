@@ -4,10 +4,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatInputModule } from '@angular/material/input';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
-import { MatDivider } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
+import { DiscussionThreadComponent } from '../discussion-thread/discussion-thread.component';
 
 @Component({
   selector: 'app-view-part',
@@ -20,11 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatTabsModule,
-    MatInputModule,
-    MatAccordion,
     MatExpansionModule,
-    MatDivider,
-    MatIconModule,
+    DiscussionThreadComponent,
   ],
   templateUrl: './view-part.component.html',
   styleUrl: './view-part.component.scss',

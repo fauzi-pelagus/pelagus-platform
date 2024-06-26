@@ -1,0 +1,19 @@
+.mat-mdc-tab-body-content {
+  padding: 20px !important;
+}
+
+mat-expansion-panel,
+mat-expansion-panel-header,
+mat-expansion-panel-body {
+  height: fit-content !important;
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+  border: solid 1px #e5e5e5;
+  border-left: 8px solid #f7941d;
+}
+
+mat-form-field {
+  width: 100%;
+}
