@@ -23,16 +23,32 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-10">
-      <mat-form-field appearance="outline">
-        <mat-label>Add a comment...</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </div>
+  <div id="root">
+    <stream-channel>
+      <stream-message-input class="mb-4"></stream-message-input>
+      <stream-message-list></stream-message-list>
+      <stream-notification-list></stream-notification-list>
+      <stream-thread name="thread">
+        <stream-message-list mode="thread"></stream-message-list>
+        <stream-message-input mode="thread"></stream-message-input>
+      </stream-thread>
+    </stream-channel>
+  </div>
 
+  <div class="row">
     <div class="col">
-      <button mat-stroked-button="primary">Send</button>
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Add a comment...</mat-label>
+        <mat-icon matSuffix>attach_file</mat-icon>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
+      </mat-form-field>
+      <button mat-stroked-button="primary">Send</button> -->
     </div>
   </div>
 </mat-expansion-panel>
