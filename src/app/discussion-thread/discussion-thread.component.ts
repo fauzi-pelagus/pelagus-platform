@@ -6,15 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
-import {
-  ChatClientService,
-  ChannelService,
-  StreamI18nService,
-  StreamAutocompleteTextareaModule,
-  StreamChatModule,
-} from 'stream-chat-angular';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-discussion-thread',
@@ -30,10 +24,10 @@ import {
     MatAccordion,
     MatExpansionModule,
     MatDivider,
+    MatListModule,
     MatIconModule,
-    TranslateModule,
-    StreamAutocompleteTextareaModule,
-    StreamChatModule,
+    MatMenuModule,
+    MatButtonModule,
   ],
   templateUrl: './discussion-thread.component.html',
   styleUrl: './discussion-thread.component.scss',
@@ -46,6 +40,22 @@ export class DiscussionThreadComponent {
         'Lorem ipsum dolor sit amet consectetur. Nec iaculis lectus volutpat vitae sed sit semper posuere. Semper ultrices integer neque tristique magna ultricies. Enim parturient consequat gravida varius dignissim urna eget. Auctor a gravida lobortis iaculis quam est.',
       status: 'Unresolved',
       isResolved: false,
+      comments: [
+        {
+          firstName: 'User',
+          lastName: '1',
+          entry:
+            'Lorem ipsum dolor sit amet consectetur. A in leo pellentesque felis amet eu. Pharetra eget tellus arcu posuere feugiat. Amet ligula venenatis neque a sit id pellentesque. Vel libero cursus at faucibus ac a. Faucibus sit ultrices maecenas nibh. Odio at sollicitudin turpis pharetra. Platea enim viverra aliquet sodales morbi accumsan. Non nisi aliquet in sem vulputate venenatis eget quis. Sit rhoncus nisl fusce imperdiet.',
+          timestamp: 'now',
+        },
+        {
+          firstName: 'User',
+          lastName: '2',
+          entry:
+            'Nec iaculis lectus volutpat vitae sed sit semper posuere. Semper ultrices integer neque tristique magna ultricies. Enim parturient consequat gravida varius dignissim urna eget. Auctor a gravida lobortis iaculis quam est.',
+          timestamp: '12/05',
+        },
+      ],
     },
     {
       title: 'Clarification topic 2',
@@ -62,35 +72,4 @@ export class DiscussionThreadComponent {
       isResolved: false,
     },
   ];
-
-  constructor(
-    private chatService: ChatClientService,
-    private channelService: ChannelService,
-    private streamI18nService: StreamI18nService
-  ) {
-    const apiKey = 'dz5f4d5kzrue';
-    const userId = 'odd-butterfly-9';
-    const userToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoib2RkLWJ1dHRlcmZseS05IiwiZXhwIjoxNzE5NDA4MjczfQ.W5BcbIaBUDNg--25Ru0YP0vMz2VMzHt6Lic60VB-i4A';
-    this.chatService.init(apiKey, userId, userToken);
-    this.streamI18nService.setTranslation();
-  }
-
-  async ngOnInit() {
-    const channel = this.chatService.chatClient.channel(
-      'messaging',
-      'talking-about-angular',
-      {
-        // add as many custom fields as you'd like
-        image:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png',
-        name: 'Talking about Angular',
-      }
-    );
-    await channel.create();
-    this.channelService.init({
-      type: 'messaging',
-      id: { $eq: 'talking-about-angular' },
-    });
-  }
 }

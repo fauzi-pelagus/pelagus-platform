@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { DiscussionThreadComponent } from '../discussion-thread/discussion-thread.component';
+import { ChangeLogComponent } from '../change-log/change-log.component';
 
 @Component({
   selector: 'app-view-part',
@@ -20,6 +21,7 @@ import { DiscussionThreadComponent } from '../discussion-thread/discussion-threa
     MatTabsModule,
     MatExpansionModule,
     DiscussionThreadComponent,
+    ChangeLogComponent,
   ],
   templateUrl: './view-part.component.html',
   styleUrl: './view-part.component.scss',

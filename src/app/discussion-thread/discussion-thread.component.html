@@ -17,38 +17,69 @@
       </div>
     </div>
   </mat-expansion-panel-header>
-  <div class="row pb-4">
-    <div class="col">
-      <mat-divider></mat-divider>
-    </div>
-  </div>
-
-  <div id="root">
-    <stream-channel>
-      <stream-message-input class="mb-4"></stream-message-input>
-      <stream-message-list></stream-message-list>
-      <stream-notification-list></stream-notification-list>
-      <stream-thread name="thread">
-        <stream-message-list mode="thread"></stream-message-list>
-        <stream-message-input mode="thread"></stream-message-input>
-      </stream-thread>
-    </stream-channel>
-  </div>
 
   <div class="row">
     <div class="col">
-      <!-- <mat-form-field appearance="outline">
+      <mat-divider class="py-3"></mat-divider>
+      <mat-form-field appearance="outline">
         <mat-label>Add a comment...</mat-label>
-        <mat-icon matSuffix>attach_file</mat-icon>
+        <button matSuffix mat-icon-button>
+          <mat-icon>attach_file</mat-icon>
+        </button>
+        <button matSuffix mat-icon-button>
+          <mat-icon>send</mat-icon>
+        </button>
         <textarea
           matInput
           cdkTextareaAutosize
           #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="5"
+          cdkAutosizeMaxRows="3"
         ></textarea>
       </mat-form-field>
-      <button mat-stroked-button="primary">Send</button> -->
+
+      <mat-list>
+        @for (comment of thread.comments; track $index){
+        <div class="row">
+          <div class="col">
+            <mat-list-item>
+              <span matListItemAvatar></span>
+              <span matListItemTitle
+                ><b>{{ comment.firstName }} {{ comment.lastName }}</b></span
+              >
+
+              <span matListItemMeta class="p-0 m-0">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </span>
+
+              <span matListItemMeta>{{ comment.timestamp }}</span>
+            </mat-list-item>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-auto p-0 justify-content-center">
+            <mat-divider vertical class="vertical-divider px-4"></mat-divider>
+          </div>
+          <div class="col mx-4 my-2">
+            <p>{{ comment.entry }}</p>
+          </div>
+        </div>
+
+        }
+      </mat-list>
     </div>
   </div>
 </mat-expansion-panel>
