@@ -1,7 +1,7 @@
 <div class="container my-4">
   <form>
     <div class="row">
-      <div class="col-6">
+      <div class="col-lg-6">
         <mat-form-field appearance="outline">
           <mat-label>Search for part</mat-label>
           <input matInput />
@@ -29,4 +29,8 @@
   </form>
 </div>
 
-<app-card></app-card>
+<div class="container container-grid my-4">
+  @for (product of products; track product.id) {
+  <app-card [product]="product"></app-card>
+  }
+</div>

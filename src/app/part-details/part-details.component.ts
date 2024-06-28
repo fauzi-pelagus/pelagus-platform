@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
@@ -9,10 +9,9 @@ import { MatDivider } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { PRODUCTS } from '../products';
 
 @Component({
-  selector: 'app-discussion-thread',
+  selector: 'app-part-details',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -30,10 +29,7 @@ import { PRODUCTS } from '../products';
     MatMenuModule,
     MatButtonModule,
   ],
-  templateUrl: './discussion-thread.component.html',
-  styleUrl: './discussion-thread.component.scss',
+  templateUrl: './part-details.component.html',
+  styleUrl: './part-details.component.scss',
 })
-export class DiscussionThreadComponent {
-  // products = PRODUCTS;
-  @Input() threads: any;
-}
+export class PartDetailsComponent {}

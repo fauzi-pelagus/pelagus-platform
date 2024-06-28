@@ -1,29 +1,30 @@
 <div class="container my-4 p-4">
+  @if (selectedProduct) {
   <mat-card appearance="outlined" class="p-4">
     <div class="row mb-4">
       <div class="col">
         <mat-card-title class="mb-2">
-          <b>1st impeller for fresh water pump</b>
+          <b>{{ selectedProduct.title }}</b>
         </mat-card-title>
-        <mat-card-subtitle> 0001 </mat-card-subtitle>
+        <mat-card-subtitle>
+          {{ selectedProduct.productNumber }}
+        </mat-card-subtitle>
       </div>
     </div>
 
     <div class="row mb-4">
-      <div class="col-3">
+      <div class="col-lg-3 col-md-6">
         <div class="img-container p-5">
           <img
             mat-card-image
-            src="../assets/img/impeller.png"
+            [src]="selectedProduct.image"
             alt="product image"
           />
         </div>
       </div>
       <div class="col">
         <p>
-          Lorem ipsum dolor sit amet consectetur. Tellus turpis lectus nec
-          lectus condimentum dignissim vitae. Vitae mauris tortor aliquet cursus
-          ut ligula.
+          {{ selectedProduct.description }}
         </p>
         <mat-chip-set class="mb-5">
           <mat-chip>Asset</mat-chip>
@@ -42,12 +43,20 @@
           <mat-tab label="Discussion">
             <div class="row m-4">
               <div class="col p-0">
-                <app-discussion-thread></app-discussion-thread>
+                <app-discussion-thread
+                  [threads]="selectedProduct.threads"
+                ></app-discussion-thread>
               </div>
             </div>
           </mat-tab>
 
-          <mat-tab label="Part details"> Part details </mat-tab>
+          <mat-tab label="Part details"
+            ><div class="row m-4">
+              <div class="col p-0">
+                <app-part-details></app-part-details>
+              </div>
+            </div>
+          </mat-tab>
 
           <mat-tab label="Change log">
             <div class="row m-4">
@@ -60,4 +69,5 @@
       </div>
     </div>
   </mat-card>
+  }
 </div>

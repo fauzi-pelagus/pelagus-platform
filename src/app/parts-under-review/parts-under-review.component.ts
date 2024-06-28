@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { CardComponent } from '../card/card.component';
 import { TopBarComponent } from '../top-bar/top-bar.component';
-import { products } from '../products';
+import { Product, PRODUCTS } from '../products';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,5 +35,7 @@ import { MatRippleModule } from '@angular/material/core';
   styleUrl: './parts-under-review.component.scss',
 })
 export class PartsUnderReviewComponent {
-  products = [...products];
+  products = PRODUCTS;
+
+  constructor(private router: Router) {}
 }

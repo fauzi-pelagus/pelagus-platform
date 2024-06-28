@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { products } from '../products';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Router,
+  RouterOutlet,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
+import { Product, PRODUCTS } from '../products';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,5 +29,12 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
-  products = [...products];
+  @Input() product: any;
+  @Output() select = new EventEmitter<Product>();
+
+  selectProduct() {
+    this.select.emit(this.product);
+  }
+
+  constructor(private router: Router) {}
 }
