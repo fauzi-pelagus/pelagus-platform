@@ -36,6 +36,12 @@ export const PRODUCTS: Product[] = [
               'Nec iaculis lectus volutpat vitae sed sit semper posuere. Semper ultrices integer neque tristique magna ultricies. Enim parturient consequat gravida varius dignissim urna eget. Auctor a gravida lobortis iaculis quam est.',
             timestamp: '12/05',
           },
+          {
+            firstName: 'User',
+            lastName: '2',
+            entry: 'created this thread.',
+            timestamp: '11/05',
+          },
         ],
       },
       {

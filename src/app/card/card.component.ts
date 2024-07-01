@@ -11,6 +11,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-card',
@@ -24,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatChipsModule,
     MatCardModule,
+    MatMenuModule,
   ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',

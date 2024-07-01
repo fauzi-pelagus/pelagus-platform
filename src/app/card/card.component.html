@@ -4,7 +4,8 @@
   </div>
   <div class="p-4">
     <mat-chip-set class="mb-4">
-      <mat-chip>Unresolved</mat-chip>
+      <mat-chip>2 Unresolved</mat-chip>
+      <mat-chip>1 Resolved</mat-chip>
     </mat-chip-set>
 
     <mat-card-title class="mb-2">
@@ -19,9 +20,19 @@
       <p>{{ product.description }}</p>
     </mat-card-content>
 
-    <mat-divider class="my-4"></mat-divider>
+    <mat-divider class="my-3"></mat-divider>
 
-    <mat-card-footer>
+    <mat-card-actions align="end">
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="mx-2">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          <span>Reject part</span>
+        </button>
+      </mat-menu>
+
       <button
         mat-flat-button
         color="primary"
@@ -31,7 +42,7 @@
       >
         Manage
       </button>
-    </mat-card-footer>
+    </mat-card-actions>
   </div>
 </mat-card>
 

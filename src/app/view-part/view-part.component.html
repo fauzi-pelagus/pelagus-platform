@@ -26,12 +26,13 @@
         <p>
           {{ selectedProduct.description }}
         </p>
-        <mat-chip-set class="mb-5">
+        <mat-chip-set class="mb-4">
           <mat-chip>Asset</mat-chip>
           <mat-chip>Asset</mat-chip>
           <mat-chip>Asset</mat-chip>
           <mat-chip>Asset</mat-chip>
           <mat-chip> Very long asset name</mat-chip>
+          <button mat-button>More >></button>
         </mat-chip-set>
         <button mat-flat-button color="primary">Request for approval</button>
       </div>
@@ -50,7 +51,7 @@
             </div>
           </mat-tab>
 
-          <mat-tab label="Part details"
+          <mat-tab label="Part information"
             ><div class="row m-4">
               <div class="col p-0">
                 <app-part-details></app-part-details>
