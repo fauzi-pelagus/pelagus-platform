@@ -89,8 +89,8 @@
           <div class="col-lg-6">
             <h6>Top 3 feasible parts</h6>
 
-            <mat-table [dataSource]="parts" class="pb-5">
-              <!-- Product Name Column -->
+            <mat-table [dataSource]="parts" class="pb-4">
+              <!-- Name Column -->
               <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef>Part</mat-header-cell>
                 <mat-cell class="py-4" *matCellDef="let part">{{
@@ -100,7 +100,7 @@
 
               <!-- Score Column -->
               <ng-container matColumnDef="score">
-                <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>Score</mat-header-cell>
                 <mat-cell class="py-4" *matCellDef="let part">{{
                   part.score
                 }}</mat-cell>
