@@ -1,0 +1,41 @@
+mat-card,
+mat-card:hover,
+mat-table {
+  background-color: white;
+}
+
+mat-card-subtitle h3 {
+  font-weight: bold;
+}
+
+.summary-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.summary-icon {
+  background-color: #f7951d10;
+  color: #f7941d;
+  border-radius: 8px;
+  padding: 8px;
+  object-fit: fill;
+  height: fit-content;
+  width: fit-content;
+  font-size: 2rem;
+}
+
+//tablet
+@media only screen and (max-width: 992px) {
+  .summary-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+//mobile
+@media only screen and (max-width: 768px) {
+  .summary-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

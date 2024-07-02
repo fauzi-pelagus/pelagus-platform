@@ -3,37 +3,47 @@
     <!-- Timestamp Column -->
     <ng-container matColumnDef="timestamp">
       <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
-      <mat-cell *matCellDef="let entry">{{ entry.timestamp }}</mat-cell>
+      <mat-cell class="py-4" *matCellDef="let entry">{{
+        entry.timestamp
+      }}</mat-cell>
     </ng-container>
 
     <!-- Username Column -->
     <ng-container matColumnDef="username">
       <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
-      <mat-cell *matCellDef="let entry">{{ entry.username }}</mat-cell>
+      <mat-cell class="py-4" *matCellDef="let entry">{{
+        entry.username
+      }}</mat-cell>
     </ng-container>
 
     <!-- Action value Column -->
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-      <mat-cell *matCellDef="let entry">{{ entry.action }}</mat-cell>
+      <mat-cell class="py-4" *matCellDef="let entry">{{
+        entry.action
+      }}</mat-cell>
     </ng-container>
 
     <!-- Section value Column -->
     <ng-container matColumnDef="section">
       <mat-header-cell *matHeaderCellDef>Section</mat-header-cell>
-      <mat-cell *matCellDef="let entry">{{ entry.section }}</mat-cell>
+      <mat-cell class="py-4" *matCellDef="let entry">{{
+        entry.section
+      }}</mat-cell>
     </ng-container>
 
     <!-- Previous value Column -->
     <ng-container matColumnDef="previous">
       <mat-header-cell *matHeaderCellDef>Previous value</mat-header-cell>
-      <mat-cell *matCellDef="let entry">{{ entry.previous }}</mat-cell>
+      <mat-cell class="py-4" *matCellDef="let entry">{{
+        entry.previous
+      }}</mat-cell>
     </ng-container>
 
     <!-- New value Column -->
     <ng-container matColumnDef="new">
       <mat-header-cell *matHeaderCellDef>New value</mat-header-cell>
-      <mat-cell *matCellDef="let entry">{{ entry.new }}</mat-cell>
+      <mat-cell class="py-4" *matCellDef="let entry">{{ entry.new }}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -1,23 +1,18 @@
-.mat-mdc-table {
+mat-table {
   overflow: auto;
 }
 
-.mat-mdc-table,
-.mat-mdc-paginator {
+mat-table,
+mat-paginator {
   background-color: white !important;
 }
 
-.mat-mdc-cell {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.mat-mdc-header-cell {
+mat-header-cell {
   font-weight: bold;
 }
 
-.mat-mdc-header-cell,
-.mat-mdc-cell {
+mat-header-cell,
+mat-cell {
   min-width: 100px;
 }
 

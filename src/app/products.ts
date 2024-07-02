@@ -9,7 +9,7 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
   {
-    id: 0,
+    id: 1,
     title: '1st impeller for fresh water pump',
     productNumber: '0001',
     description:
@@ -59,7 +59,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     title: '2nd impeller for fresh water pump',
     productNumber: '0002',
     description:
@@ -91,7 +91,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: '3rd impeller for fresh water pump',
     productNumber: '0003',
     description:
@@ -100,7 +100,7 @@ export const PRODUCTS: Product[] = [
     threads: [],
   },
   {
-    id: 3,
+    id: 4,
     title: '4th impeller for fresh water pump',
     productNumber: '0004',
     description:

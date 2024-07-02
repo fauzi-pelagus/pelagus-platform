@@ -1,0 +1,131 @@
+<div class="container my-4">
+  <div class="row summary-container mb-4">
+    <div class="col">
+      <mat-card
+        class="p-4 clickable"
+        matBadge="1"
+        matRipple
+        routerLink="/parts-under-review"
+      >
+        <mat-card-title-group>
+          <mat-card-title class="mb-2"><h6>Feasible parts</h6></mat-card-title>
+          <mat-card-subtitle><h3>467</h3></mat-card-subtitle>
+          <div class="icon-container p-2">
+            <mat-icon class="summary-icon">settings</mat-icon>
+          </div>
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+
+    <div class="col">
+      <mat-card class="p-4">
+        <mat-card-title-group>
+          <mat-card-title class="mb-2"
+            ><h6>Parts under review</h6></mat-card-title
+          >
+          <mat-card-subtitle><h3>25</h3></mat-card-subtitle>
+          <div class="icon-container p-2">
+            <mat-icon class="summary-icon">message</mat-icon>
+          </div>
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+
+    <div class="col">
+      <mat-card class="p-4">
+        <mat-card-title-group>
+          <mat-card-title class="mb-2"><h6>Quotes received</h6></mat-card-title>
+          <mat-card-subtitle><h3>05</h3></mat-card-subtitle>
+          <div class="icon-container p-2">
+            <mat-icon class="summary-icon">monetization_on</mat-icon>
+          </div>
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+
+    <div class="col">
+      <mat-card class="p-4">
+        <mat-card-title-group>
+          <mat-card-title class="mb-2"><h6>Ongoing orders</h6></mat-card-title>
+          <mat-card-subtitle><h3>02</h3></mat-card-subtitle>
+          <div class="p-2">
+            <mat-icon class="summary-icon">shopping_cart</mat-icon>
+          </div>
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col">
+      <mat-card class="p-4">
+        <mat-card-title><h6>Action needed</h6></mat-card-title>
+        <mat-list>
+          @for (action of actions; track $index) {
+          <mat-list-item class="my-4">
+            <mat-icon matListItemIcon>settings</mat-icon>
+            <div matListItemMeta>{{ action.timestamp }}</div>
+            <div matListItemLine>
+              <b>{{ action.productName }}</b> {{ action.action }}
+            </div>
+            <button matListItemMeta mat-stroked-button>View</button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          }
+        </mat-list>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-card class="p-4">
+        <mat-card-title><h6>Suggested parts</h6></mat-card-title>
+        <div class="row">
+          <div class="col-lg-6">
+            <app-pie-chart></app-pie-chart>
+          </div>
+
+          <div class="col-lg-6">
+            <h6>Top 3 feasible parts</h6>
+
+            <mat-table [dataSource]="parts" class="pb-5">
+              <!-- Product Name Column -->
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>Part</mat-header-cell>
+                <mat-cell class="py-4" *matCellDef="let part">{{
+                  part.name
+                }}</mat-cell>
+              </ng-container>
+
+              <!-- Score Column -->
+              <ng-container matColumnDef="score">
+                <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+                <mat-cell class="py-4" *matCellDef="let part">{{
+                  part.score
+                }}</mat-cell>
+              </ng-container>
+
+              <!-- Action Column -->
+              <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                <mat-cell class="py-4" *matCellDef="let part"
+                  ><button mat-stroked-button>
+                    {{ part.action }}
+                  </button></mat-cell
+                >
+              </ng-container>
+
+              <mat-header-row
+                *matHeaderRowDef="displayedColumns"
+              ></mat-header-row>
+              <mat-row
+                *matRowDef="let row; columns: displayedColumns"
+              ></mat-row>
+            </mat-table>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

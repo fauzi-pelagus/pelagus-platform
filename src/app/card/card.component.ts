@@ -1,9 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 import {
   Router,
   RouterOutlet,
   RouterLink,
   RouterLinkActive,
+  ActivatedRoute,
 } from '@angular/router';
 import { Product, PRODUCTS } from '../products';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,6 +45,4 @@ export class CardComponent {
   selectProduct() {
     this.select.emit(this.product);
   }
-
-  constructor(private router: Router) {}
 }
