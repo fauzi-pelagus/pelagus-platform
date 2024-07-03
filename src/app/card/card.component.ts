@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-card',
@@ -34,6 +35,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatChipsModule,
     MatCardModule,
     MatMenuModule,
+    TagModule,
   ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',

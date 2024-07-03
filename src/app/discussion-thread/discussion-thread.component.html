@@ -21,7 +21,6 @@
       </div>
     </div>
   </mat-expansion-panel-header>
-
   <div class="row">
     <div class="col">
       <mat-divider class="py-3"></mat-divider>
@@ -78,7 +77,14 @@
             <mat-divider vertical class="vertical-divider px-4"></mat-divider>
           </div>
           <div class="col mx-4 my-2">
-            <p>{{ comment.entry }}</p>
+            <p class="mb-4">{{ comment.entry }}</p>
+            <p-image
+              [src]="comment.attachments"
+              [alt]="comment.attachments"
+              width="200"
+              [preview]="true"
+              styleClass="mb-4"
+            />
           </div>
         </div>
 

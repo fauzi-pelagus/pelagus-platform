@@ -28,6 +28,7 @@ export const PRODUCTS: Product[] = [
             entry:
               'Lorem ipsum dolor sit amet consectetur. A in leo pellentesque felis amet eu. Pharetra eget tellus arcu posuere feugiat. Amet ligula venenatis neque a sit id pellentesque. Vel libero cursus at faucibus ac a. Faucibus sit ultrices maecenas nibh. Odio at sollicitudin turpis pharetra. Platea enim viverra aliquet sodales morbi accumsan. Non nisi aliquet in sem vulputate venenatis eget quis. Sit rhoncus nisl fusce imperdiet.',
             timestamp: 'now',
+            attachments: 'assets/img/impeller-1.png',
           },
           {
             firstName: 'User',
@@ -35,12 +36,14 @@ export const PRODUCTS: Product[] = [
             entry:
               'Nec iaculis lectus volutpat vitae sed sit semper posuere. Semper ultrices integer neque tristique magna ultricies. Enim parturient consequat gravida varius dignissim urna eget. Auctor a gravida lobortis iaculis quam est.',
             timestamp: '12/05',
+            attachments: '',
           },
           {
             firstName: 'User',
             lastName: '2',
             entry: 'created this thread.',
             timestamp: '11/05',
+            attachments: '',
           },
         ],
       },

@@ -4,6 +4,7 @@ import {
   RouterLinkActive,
   RouterOutlet,
   ActivatedRoute,
+  RouterModule,
 } from '@angular/router';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
@@ -14,6 +15,12 @@ import { DiscussionThreadComponent } from '../discussion-thread/discussion-threa
 import { ChangeLogComponent } from '../change-log/change-log.component';
 import { PartDetailsComponent } from '../part-details/part-details.component';
 import { Product, PRODUCTS } from '../products';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { MenuItem } from 'primeng/api';
+import { StlModelViewerModule } from 'angular-stl-model-viewer';
 
 @Component({
   selector: 'app-view-part',
@@ -22,6 +29,7 @@ import { Product, PRODUCTS } from '../products';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    RouterModule,
     MatChipsModule,
     MatCardModule,
     MatButtonModule,
@@ -30,7 +38,12 @@ import { Product, PRODUCTS } from '../products';
     DiscussionThreadComponent,
     ChangeLogComponent,
     PartDetailsComponent,
+    ConfirmDialogModule,
+    ToastModule,
+    BreadcrumbModule,
+    StlModelViewerModule,
   ],
+  providers: [ConfirmationService, MessageService],
   templateUrl: './view-part.component.html',
   styleUrl: './view-part.component.scss',
 })
@@ -39,7 +52,15 @@ export class ViewPartComponent implements OnInit {
 
   selectedProduct: Product | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  items: MenuItem[] | undefined;
+
+  home: MenuItem | undefined;
+
+  constructor(
+    private route: ActivatedRoute,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id')!;
