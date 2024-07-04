@@ -1,13 +1,65 @@
-@for (thread of threads; track $index) {
+<div class="row mb-4">
+  <div class="col">
+    <button
+      mat-stroked-button
+      (click)="toggleDisplay()"
+      [style]="
+        isShow
+          ? ''
+          : 'background-color: var(--mdc-filled-button-container-color); color: white'
+      "
+    >
+      <mat-icon>add</mat-icon>Create new thread
+    </button>
+  </div>
+</div>
+
+<div class="row mb-4" [hidden]="isShow">
+  <div class="col">
+    <mat-card class="p-4">
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>Thread</mat-label>
+        <input
+          matInput
+          placeholder="Write your title here..."
+          [(ngModel)]="threads.title"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3"
+          cdkAutosizeMaxRows="10"
+          placeholder="Write your summary here..."
+          [(ngModel)]="threads.summary"
+        ></textarea>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-stroked-button class="me-2" (click)="toggleDisplay()">
+          Cancel
+        </button>
+        <button mat-flat-button (click)="createNewThread()">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+@for (thread of threads; track thread.timestamp) {
 <mat-expansion-panel
   [class]="thread.isResolved ? 'mb-4 resolved' : 'mb-4 unresolved'"
 >
   <mat-expansion-panel-header class="p-4">
     <div class="row flex-column">
-      <div class="col mb-4">
-        <mat-chip class="mr-4">{{
+      @if (!thread.editMode) {
+      <div class="col mb-4 justify-content-center">
+        <mat-chip class="me-2">{{
           thread.isResolved ? "Resolved" : "Unresolved"
         }}</mat-chip>
+        <button mat-icon-button (click)="thread.editMode = !thread.editMode">
+          <mat-icon>edit</mat-icon>
+        </button>
       </div>
       <div class="col mb-2">
         <mat-panel-title
@@ -19,6 +71,48 @@
           {{ thread.summary }}
         </mat-panel-description>
       </div>
+      } @else {
+      <div class="col pt-2">
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Status</mat-label>
+          <mat-select>
+            <mat-option value="one">Unresolved</mat-option>
+            <mat-option value="two">Resolved</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Thread</mat-label>
+          <input
+            matInput
+            placeholder="Write your title here..."
+            [(ngModel)]="threads.title"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="3"
+            cdkAutosizeMaxRows="10"
+            placeholder="Write your summary here..."
+            [(ngModel)]="threads.summary"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="col mb-2">
+        <button
+          mat-stroked-button
+          class="me-2"
+          (click)="thread.editMode = !thread.editMode"
+        >
+          Cancel
+        </button>
+        <button mat-flat-button>Save</button>
+        <button mat-icon-button><mat-icon>delete</mat-icon></button>
+      </div>
+      }
     </div>
   </mat-expansion-panel-header>
   <div class="row">

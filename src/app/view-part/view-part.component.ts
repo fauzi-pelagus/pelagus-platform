@@ -7,6 +7,7 @@ import {
   RouterModule,
 } from '@angular/router';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -31,6 +32,7 @@ import { StlModelViewerModule } from 'angular-stl-model-viewer';
     RouterLinkActive,
     RouterModule,
     MatChipsModule,
+    MatIconModule,
     MatCardModule,
     MatButtonModule,
     MatTabsModule,

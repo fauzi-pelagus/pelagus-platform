@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   Event,
   RouterLink,
@@ -7,7 +8,7 @@ import {
 } from '@angular/router';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
@@ -18,6 +19,9 @@ import { ImageModule } from 'primeng/image';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { Button } from 'primeng/button';
 
 interface UploadEvent {
   originalEvent: Event;
@@ -28,6 +32,7 @@ interface UploadEvent {
   selector: 'app-discussion-thread',
   standalone: true,
   imports: [
+    FormsModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
@@ -35,6 +40,8 @@ interface UploadEvent {
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatAccordion,
     MatExpansionModule,
     MatDivider,
@@ -50,17 +57,48 @@ interface UploadEvent {
   templateUrl: './discussion-thread.component.html',
   styleUrl: './discussion-thread.component.scss',
 })
-export class DiscussionThreadComponent {
+export class DiscussionThreadComponent implements OnInit {
   // products = PRODUCTS;
   @Input() threads: any;
 
-  constructor(private messageService: MessageService) {}
+  // constructor(private messageService: MessageService) {}
 
-  onUpload(event: UploadEvent) {
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Success',
-      detail: 'File Uploaded with Basic Mode',
+  // onUpload(event: UploadEvent) {
+  //   this.messageService.add({
+  //     severity: 'info',
+  //     summary: 'Success',
+  //     detail: 'File Uploaded with Basic Mode',
+  //   });
+  // }
+
+  ngOnInit() {}
+
+  isShow: boolean = true;
+  editMode: boolean = false;
+
+  toggleDisplay() {
+    this.isShow = !this.isShow;
+  }
+
+  createNewThread() {
+    this.threads.unshift({
+      title: this.threads.title,
+      summary: this.threads.summary,
+      isResolved: false,
+      comments: [
+        {
+          firstName: 'User',
+          lastName: '2',
+          entry: 'created this thread.',
+          timestamp: '11/05',
+          attachments: '',
+        },
+      ],
     });
+    this.isShow = !this.isShow;
+  }
+
+  editThread() {
+    this.threads.editMode = !this.threads.editMode;
   }
 }
