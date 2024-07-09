@@ -76,24 +76,4 @@ export class FabricatorOptionsComponent implements OnInit {
       }),
     });
   }
-
-  // options: google.maps.MapOptions = {
-  //   mapId: 'DEMO_MAP_ID',
-  //   styles: [],
-  //   center: { lat: 37.32105198340377, lng: 54.83080269598317 },
-  //   zoom: 2,
-  //   disableDefaultUI: true,
-  //   mapTypeControl: false,
-  // };
-
-  // polylineOptions: google.maps.PolylineOptions = {
-  //   path: [
-  //     { lat: 1.285746395688935, lng: 103.8473425488912 },
-  //     { lat: 59.912126741718374, lng: 10.640609982563435 },
-  //     { lat: 50.887725582648, lng: -1.3967335551980313 },
-  //   ],
-  //   strokeColor: '#32a1d0',
-  //   strokeOpacity: 1.0,
-  //   strokeWeight: 2,
-  // };
 }
