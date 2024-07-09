@@ -58,18 +58,7 @@ interface UploadEvent {
   styleUrl: './discussion-thread.component.scss',
 })
 export class DiscussionThreadComponent implements OnInit {
-  // products = PRODUCTS;
   @Input() threads: any;
-
-  // constructor(private messageService: MessageService) {}
-
-  // onUpload(event: UploadEvent) {
-  //   this.messageService.add({
-  //     severity: 'info',
-  //     summary: 'Success',
-  //     detail: 'File Uploaded with Basic Mode',
-  //   });
-  // }
 
   ngOnInit() {}
 
