@@ -1,0 +1,61 @@
+mat-card,
+mat-card:hover,
+mat-table,
+mat-paginator {
+  background-color: white;
+}
+
+mat-card-title h3 {
+  font-weight: bold;
+}
+
+.summary-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.summary-icon {
+  background-color: #f7951d10;
+  color: #f7941d;
+  border-radius: 8px;
+  padding: 8px;
+  object-fit: fill;
+  height: fit-content;
+  width: fit-content;
+  font-size: 2rem;
+}
+
+mat-header-cell {
+  font-weight: bold;
+}
+
+.img-container {
+  background-color: #80808010;
+}
+
+.img-container img {
+  height: 100%;
+  width: 100%;
+  max-width: 60px;
+  object-fit: contain;
+}
+
+.mat-column-item {
+  flex: 0 0 30%;
+}
+
+//tablet
+@media only screen and (max-width: 992px) {
+  .summary-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+//mobile
+@media only screen and (max-width: 768px) {
+  .summary-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

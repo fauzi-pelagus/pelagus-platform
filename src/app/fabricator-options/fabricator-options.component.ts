@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { GoogleMapsModule } from '@angular/google-maps';
+import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import 'ol/ol.css';
 import { Map, View } from 'ol';
 import { Tile as TileLayer, Vector as LayerVector } from 'ol/layer';
@@ -32,7 +33,7 @@ const SUPPLIER_LOCATIONS: locations[] = [
 @Component({
   selector: 'app-fabricator-options',
   standalone: true,
-  imports: [],
+  imports: [MatTableModule, MatPaginatorModule],
   templateUrl: './fabricator-options.component.html',
   styleUrl: './fabricator-options.component.scss',
 })
