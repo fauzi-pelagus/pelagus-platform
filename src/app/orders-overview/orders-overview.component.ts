@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
 import { FabricatorOptionsComponent } from '../fabricator-options/fabricator-options.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { PieChartComponent } from '../pie-chart/pie-chart.component';
+import { DialogModule } from 'primeng/dialog';
 
 export interface Orders {
   orderNumber: string;
@@ -71,6 +72,7 @@ const ACTIVE_ORDERS: Orders[] = [
     MatChipsModule,
     MatPaginator,
     MatPaginatorModule,
+    DialogModule,
   ],
   templateUrl: './orders-overview.component.html',
   styleUrl: './orders-overview.component.scss',
@@ -90,5 +92,12 @@ export class OrdersOverviewComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  @ViewChild(FabricatorOptionsComponent)
+  dialogComponent!: FabricatorOptionsComponent;
+
+  showDialog() {
+    this.dialogComponent.display = true;
   }
 }

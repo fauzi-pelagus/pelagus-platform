@@ -1,4 +1,15 @@
-.map {
+.map-container {
   width: 100%;
-  height: 600px;
+  height: 400px;
+}
+
+mat-card,
+mat-card:hover,
+mat-table,
+mat-paginator {
+  background-color: white;
+}
+
+mat-header-cell {
+  font-weight: bold;
 }

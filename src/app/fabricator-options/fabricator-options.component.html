@@ -1,1 +1,92 @@
-<div id="map" class="map"></div>
+<p-dialog
+  header="View bids"
+  [(visible)]="display"
+  modal="modal"
+  [style]="{ width: '70vw' }"
+  (onShow)="ngAfterViewInit()"
+>
+  <div #mapContainer class="map-container mb-5"></div>
+
+  <div class="row">
+    <div class="col">
+      <mat-card class="p-4">
+        <mat-table [dataSource]="dataSource" class="pb-5">
+          <!-- Option Column -->
+          <ng-container matColumnDef="option">
+            <mat-header-cell *matHeaderCellDef>Option</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let bid">{{
+              bid.option
+            }}</mat-cell>
+          </ng-container>
+
+          <!-- Supplier Column -->
+          <ng-container matColumnDef="supplier">
+            <mat-header-cell *matHeaderCellDef>Supplier</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let bid">{{
+              bid.supplier
+            }}</mat-cell>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef>Price (USD$)</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let bid"
+              >{{ bid.price }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Lead time Column -->
+          <ng-container matColumnDef="leadTime">
+            <mat-header-cell *matHeaderCellDef
+              >Lead time (days)</mat-header-cell
+            >
+            <mat-cell class="py-4" *matCellDef="let bid"
+              >{{ bid.leadTime }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Region Column -->
+          <ng-container matColumnDef="region">
+            <mat-header-cell *matHeaderCellDef>Region</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let bid"
+              >{{ bid.region }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let bid"
+              ><mat-chip-set class="mb-2">
+                <mat-chip>{{ bid.status }}</mat-chip>
+              </mat-chip-set></mat-cell
+            >
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let bid">
+              <mat-radio-button
+                [value]="bid.option"
+                (change)="selectRow(bid.option)"
+                [checked]="selectedBid === bid.option"
+              ></mat-radio-button
+            ></mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+
+        <mat-paginator
+          #matpaginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of changelogs"
+        >
+        </mat-paginator>
+      </mat-card>
+    </div>
+  </div>
+</p-dialog>

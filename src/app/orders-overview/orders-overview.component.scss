@@ -5,7 +5,8 @@ mat-paginator {
   background-color: white;
 }
 
-mat-card-title h3 {
+mat-card-title h3,
+mat-header-cell {
   font-weight: bold;
 }
 
@@ -23,10 +24,6 @@ mat-card-title h3 {
   height: fit-content;
   width: fit-content;
   font-size: 2rem;
-}
-
-mat-header-cell {
-  font-weight: bold;
 }
 
 .img-container {

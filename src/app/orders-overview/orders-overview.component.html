@@ -5,24 +5,63 @@
     </div>
   </div>
 
-  <div class="row summary-container mb-4">
+  <div class="row mb-5">
+    <div class="col-6">
+      <mat-card class="p-4">
+        <app-pie-chart></app-pie-chart>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <h4>Quotes list</h4>
+    </div>
+  </div>
+
+  <div class="row summary-container mb-5">
     <div class="col">
       <mat-card class="p-4">
-        <mat-chip-set class="mb-2">
-          <mat-chip>Pending</mat-chip>
-        </mat-chip-set>
         <mat-card-title-group>
-          <mat-card-title class="mb-2"><h3>S24-2189</h3></mat-card-title>
-          <mat-card-subtitle><p>23/08/2024, 2:58PM</p></mat-card-subtitle>
+          <mat-card-title class="mb-3"><h3>S24-2189</h3></mat-card-title>
+          <mat-card-subtitle class="mb-3"
+            ><h6>
+              <small>Updated: 23/08/2024, 2:58PM</small>
+            </h6></mat-card-subtitle
+          >
+          <mat-chip-set class="mb-3">
+            <mat-chip>Bids received</mat-chip>
+          </mat-chip-set>
         </mat-card-title-group>
+
         <mat-divider></mat-divider>
-        <mat-list>
-          <mat-list-item class="p-0">Quotes received</mat-list-item>
-          <mat-list-item class="p-0">Item 2</mat-list-item>
-          <mat-list-item class="p-0">Item 3</mat-list-item>
-        </mat-list>
+
+        <mat-card-content class="px-0 py-3">
+          <div class="row py-1">
+            <div class="col"><h6>No. of bids:</h6></div>
+            <div class="col text-end">
+              <h6><b>3</b></h6>
+            </div>
+          </div>
+
+          <div class="row py-1">
+            <div class="col"><h6>Price range (USD$):</h6></div>
+            <div class="col text-end">
+              <h6><b>12,089 - 24,670</b></h6>
+            </div>
+          </div>
+
+          <div class="row py-1">
+            <div class="col"><h6>Lead times (days):</h6></div>
+            <div class="col text-end">
+              <h6><b>12 - 31</b></h6>
+            </div>
+          </div>
+        </mat-card-content>
+
         <mat-divider></mat-divider>
-        <mat-card-actions align="end">
+
+        <mat-card-actions class="py-3" align="end">
           <button mat-icon-button class="mx-2">
             <mat-icon>more_horiz</mat-icon>
           </button>
@@ -32,9 +71,11 @@
             color="primary"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
+            (click)="showDialog()"
           >
-            Manage
+            View bids
           </button>
+          <app-fabricator-options></app-fabricator-options>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -42,95 +83,142 @@
     <div class="col">
       <mat-card class="p-4">
         <mat-card-title-group>
-          <mat-card-title class="mb-2"><h6>Under bidding</h6></mat-card-title>
-          <mat-card-subtitle><h3>02</h3></mat-card-subtitle>
-          <div class="icon-container p-2">
-            <mat-icon class="summary-icon">gavel</mat-icon>
-          </div>
+          <mat-card-title class="mb-3"><h3>S24-2189</h3></mat-card-title>
+          <mat-card-subtitle class="mb-3"
+            ><h6>
+              <small>Updated: 23/08/2024, 2:58PM</small>
+            </h6></mat-card-subtitle
+          >
+          <mat-chip-set class="mb-3">
+            <mat-chip>Bids received</mat-chip>
+          </mat-chip-set>
         </mat-card-title-group>
-      </mat-card>
-    </div>
 
-    <div class="col">
-      <mat-card class="p-4">
-        <mat-card-title-group>
-          <mat-card-title class="mb-2"><h6>Quotes received</h6></mat-card-title>
-          <mat-card-subtitle><h3>05</h3></mat-card-subtitle>
-          <div class="icon-container p-2">
-            <mat-icon class="summary-icon">monetization_on</mat-icon>
+        <mat-divider></mat-divider>
+
+        <mat-card-content class="px-0 py-3">
+          <div class="row py-1">
+            <div class="col"><h6>No. of bids:</h6></div>
+            <div class="col text-end">
+              <h6><b>3</b></h6>
+            </div>
           </div>
-        </mat-card-title-group>
+
+          <div class="row py-1">
+            <div class="col"><h6>Price range (USD$):</h6></div>
+            <div class="col text-end">
+              <h6><b>12,089 - 24,670</b></h6>
+            </div>
+          </div>
+
+          <div class="row py-1">
+            <div class="col"><h6>Lead times (days):</h6></div>
+            <div class="col text-end">
+              <h6><b>12 - 31</b></h6>
+            </div>
+          </div>
+        </mat-card-content>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-actions class="py-3" align="end">
+          <button mat-icon-button class="mx-2">
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+
+          <button
+            mat-flat-button
+            color="primary"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (onClick)="showDialog()"
+          >
+            View bids
+          </button>
+        </mat-card-actions>
       </mat-card>
     </div>
   </div>
 
-  <div class="mat-elevation-z8">
-    <mat-table [dataSource]="dataSource" class="pb-5">
-      <!-- Order number Column -->
-      <ng-container matColumnDef="orderNumber">
-        <mat-header-cell *matHeaderCellDef>Order no.</mat-header-cell>
-        <mat-cell class="py-4" *matCellDef="let order">{{
-          order.orderNumber
-        }}</mat-cell>
-      </ng-container>
+  <div class="row mb-3">
+    <div class="col">
+      <h4>Active orders</h4>
+    </div>
+  </div>
 
-      <!-- Item Column -->
-      <ng-container matColumnDef="item">
-        <mat-header-cell *matHeaderCellDef>Item</mat-header-cell>
-        <mat-cell class="py-4" *matCellDef="let order"
-          ><div class="img-container p-3 me-3">
-            <img mat-card-image [src]="order.image" alt="product image" />
-          </div>
-          <div>{{ order.item }}</div></mat-cell
+  <div class="row">
+    <div class="col">
+      <mat-card class="p-4">
+        <mat-table [dataSource]="dataSource" class="pb-5">
+          <!-- Order number Column -->
+          <ng-container matColumnDef="orderNumber">
+            <mat-header-cell *matHeaderCellDef>Order no.</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order">{{
+              order.orderNumber
+            }}</mat-cell>
+          </ng-container>
+
+          <!-- Item Column -->
+          <ng-container matColumnDef="item">
+            <mat-header-cell *matHeaderCellDef>Item</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order"
+              ><div class="img-container p-3 me-3">
+                <img mat-card-image [src]="order.image" alt="product image" />
+              </div>
+              <div>{{ order.item }}</div></mat-cell
+            >
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef>Price (USD$)</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order"
+              >{{ order.price }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Lead time Column -->
+          <ng-container matColumnDef="leadTime">
+            <mat-header-cell *matHeaderCellDef
+              >Lead time (days)</mat-header-cell
+            >
+            <mat-cell class="py-4" *matCellDef="let order"
+              >{{ order.leadTime }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order"
+              ><mat-chip-set class="mb-2">
+                <mat-chip>{{ order.status }}</mat-chip>
+              </mat-chip-set></mat-cell
+            >
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order"
+              ><button mat-stroked-button color="primary">
+                {{ order.action }}
+              </button></mat-cell
+            >
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+
+        <mat-paginator
+          #matpaginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of changelogs"
         >
-      </ng-container>
-
-      <!-- Price Column -->
-      <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef>Price (USD$)</mat-header-cell>
-        <mat-cell class="py-4" *matCellDef="let order"
-          >{{ order.price }}
-        </mat-cell>
-      </ng-container>
-
-      <!-- Lead time Column -->
-      <ng-container matColumnDef="leadTime">
-        <mat-header-cell *matHeaderCellDef>Lead time (days)</mat-header-cell>
-        <mat-cell class="py-4" *matCellDef="let order"
-          >{{ order.leadTime }}
-        </mat-cell>
-      </ng-container>
-
-      <!-- Status Column -->
-      <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-        <mat-cell class="py-4" *matCellDef="let order"
-          ><mat-chip-set class="mb-2">
-            <mat-chip>{{ order.status }}</mat-chip>
-          </mat-chip-set></mat-cell
-        >
-      </ng-container>
-
-      <!-- Action Column -->
-      <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-        <mat-cell class="py-4" *matCellDef="let order"
-          ><button mat-flat-button color="primary">
-            {{ order.action }}
-          </button></mat-cell
-        >
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>
-
-    <mat-paginator
-      #matpaginator
-      [pageSizeOptions]="[5, 10, 20]"
-      showFirstLastButtons
-      aria-label="Select page of changelogs"
-    >
-    </mat-paginator>
+        </mat-paginator>
+      </mat-card>
+    </div>
   </div>
 </div>
