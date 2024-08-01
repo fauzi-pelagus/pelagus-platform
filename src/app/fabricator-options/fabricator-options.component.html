@@ -5,88 +5,243 @@
   [style]="{ width: '70vw' }"
   (onShow)="ngAfterViewInit()"
 >
-  <div #mapContainer class="map-container mb-5"></div>
+  <p-stepper [linear]="true">
+    <p-stepperPanel header="Select bid">
+      <ng-template
+        pTemplate="content"
+        let-nextCallback="nextCallback"
+        let-index="index"
+      >
+        <div class="row mb-4 justify-content-center">
+          <div class="col-8">
+            <div #mapContainer class="map-container"></div>
+          </div>
+        </div>
 
-  <div class="row">
-    <div class="col">
-      <mat-card class="p-4">
-        <mat-table [dataSource]="dataSource" class="pb-5">
-          <!-- Option Column -->
-          <ng-container matColumnDef="option">
-            <mat-header-cell *matHeaderCellDef>Option</mat-header-cell>
-            <mat-cell class="py-4" *matCellDef="let bid">{{
-              bid.option
-            }}</mat-cell>
-          </ng-container>
+        <div class="row mb-4 container-grid">
+          <div class="col">
+            <mat-card class="p-4">
+              <mat-card-title-group>
+                <mat-card-title class="mb-3">Supplier 1</mat-card-title>
+              </mat-card-title-group>
 
-          <!-- Supplier Column -->
-          <ng-container matColumnDef="supplier">
-            <mat-header-cell *matHeaderCellDef>Supplier</mat-header-cell>
-            <mat-cell class="py-4" *matCellDef="let bid">{{
-              bid.supplier
-            }}</mat-cell>
-          </ng-container>
+              <mat-divider></mat-divider>
 
-          <!-- Price Column -->
-          <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef>Price (USD$)</mat-header-cell>
-            <mat-cell class="py-4" *matCellDef="let bid"
-              >{{ bid.price }}
-            </mat-cell>
-          </ng-container>
+              <mat-card-content class="p-0 mt-3">
+                <div class="row py-1">
+                  <div class="col text-start"><h6>Quote (USD$):</h6></div>
+                  <div class="col text-end">
+                    <h6><b>24,670</b></h6>
+                  </div>
+                </div>
 
-          <!-- Lead time Column -->
-          <ng-container matColumnDef="leadTime">
-            <mat-header-cell *matHeaderCellDef
-              >Lead time (days)</mat-header-cell
+                <div class="row py-1">
+                  <div class="col text-start"><h6>Lead times (days):</h6></div>
+                  <div class="col text-end">
+                    <h6><b>31</b></h6>
+                  </div>
+                </div>
+
+                <div class="row py-1">
+                  <div class="col text-start">
+                    <h6>Region manufactured:</h6>
+                  </div>
+                  <div class="col text-end">
+                    <h6><b>Europe</b></h6>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col">
+            <mat-card class="p-4">
+              <mat-card-title-group>
+                <mat-card-title class="mb-3">Supplier 2</mat-card-title>
+              </mat-card-title-group>
+
+              <mat-divider></mat-divider>
+
+              <mat-card-content class="p-0 mt-3">
+                <div class="row py-1">
+                  <div class="col text-start"><h6>Quote (USD$):</h6></div>
+                  <div class="col text-end">
+                    <h6><b>24,670</b></h6>
+                  </div>
+                </div>
+
+                <div class="row py-1">
+                  <div class="col text-start"><h6>Lead times (days):</h6></div>
+                  <div class="col text-end">
+                    <h6><b>31</b></h6>
+                  </div>
+                </div>
+
+                <div class="row py-1">
+                  <div class="col text-start">
+                    <h6>Region manufactured:</h6>
+                  </div>
+                  <div class="col text-end">
+                    <h6><b>Europe</b></h6>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col">
+            <mat-card class="p-4">
+              <mat-card-title-group>
+                <mat-card-title class="mb-3">Supplier 3</mat-card-title>
+              </mat-card-title-group>
+
+              <mat-divider></mat-divider>
+
+              <mat-card-content class="p-0 mt-3">
+                <div class="row py-1">
+                  <div class="col text-start"><h6>Quote (USD$):</h6></div>
+                  <div class="col text-end">
+                    <h6><b>24,670</b></h6>
+                  </div>
+                </div>
+
+                <div class="row py-1">
+                  <div class="col text-start"><h6>Lead times (days):</h6></div>
+                  <div class="col text-end">
+                    <h6><b>31</b></h6>
+                  </div>
+                </div>
+
+                <div class="row py-1">
+                  <div class="col text-start">
+                    <h6>Region manufactured:</h6>
+                  </div>
+                  <div class="col text-end">
+                    <h6><b>Europe</b></h6>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- <mat-card class="p-4 mb-4">
+              <mat-table [dataSource]="dataSource">
+                
+                <ng-container matColumnDef="option">
+                  <mat-header-cell *matHeaderCellDef>Option</mat-header-cell>
+                  <mat-cell class="py-4" *matCellDef="let bid">{{
+                    bid.option
+                  }}</mat-cell>
+                </ng-container>
+
+                
+                <ng-container matColumnDef="supplier">
+                  <mat-header-cell *matHeaderCellDef>Supplier</mat-header-cell>
+                  <mat-cell class="py-4" *matCellDef="let bid">{{
+                    bid.supplier
+                  }}</mat-cell>
+                </ng-container>
+
+                
+                <ng-container matColumnDef="price">
+                  <mat-header-cell *matHeaderCellDef
+                    >Price (USD$)</mat-header-cell
+                  >
+                  <mat-cell class="py-4" *matCellDef="let bid"
+                    >{{ bid.price }}
+                  </mat-cell>
+                </ng-container>
+
+                
+                <ng-container matColumnDef="leadTime">
+                  <mat-header-cell *matHeaderCellDef
+                    >Lead time (days)</mat-header-cell
+                  >
+                  <mat-cell class="py-4" *matCellDef="let bid"
+                    >{{ bid.leadTime }}
+                  </mat-cell>
+                </ng-container>
+
+                
+                <ng-container matColumnDef="region">
+                  <mat-header-cell *matHeaderCellDef>Region</mat-header-cell>
+                  <mat-cell class="py-4" *matCellDef="let bid"
+                    >{{ bid.region }}
+                  </mat-cell>
+                </ng-container>
+
+                
+                <ng-container matColumnDef="status">
+                  <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                  <mat-cell class="py-4" *matCellDef="let bid"
+                    ><mat-chip-set class="mb-2">
+                      <mat-chip>{{ bid.status }}</mat-chip>
+                    </mat-chip-set></mat-cell
+                  >
+                </ng-container>
+
+                
+                <ng-container matColumnDef="action">
+                  <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                  <mat-cell class="py-4" *matCellDef="let bid">
+                    <mat-radio-button
+                      [value]="bid.option"
+                      (change)="selectRow(bid.option)"
+                      [checked]="selectedBid === bid.option"
+                    ></mat-radio-button
+                  ></mat-cell>
+                </ng-container>
+
+                <mat-header-row
+                  *matHeaderRowDef="displayedColumns"
+                ></mat-header-row>
+                <mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></mat-row>
+              </mat-table>
+            </mat-card> -->
+          </div>
+        </div>
+
+        <div class="row text-align-end">
+          <div class="col">
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="nextCallback.emit()"
             >
-            <mat-cell class="py-4" *matCellDef="let bid"
-              >{{ bid.leadTime }}
-            </mat-cell>
-          </ng-container>
+              Next
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </p-stepperPanel>
 
-          <!-- Region Column -->
-          <ng-container matColumnDef="region">
-            <mat-header-cell *matHeaderCellDef>Region</mat-header-cell>
-            <mat-cell class="py-4" *matCellDef="let bid"
-              >{{ bid.region }}
-            </mat-cell>
-          </ng-container>
-
-          <!-- Status Column -->
-          <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-            <mat-cell class="py-4" *matCellDef="let bid"
-              ><mat-chip-set class="mb-2">
-                <mat-chip>{{ bid.status }}</mat-chip>
-              </mat-chip-set></mat-cell
+    <p-stepperPanel header="Header II">
+      <ng-template
+        pTemplate="content"
+        let-prevCallback="prevCallback"
+        let-nextCallback="nextCallback"
+        let-index="index"
+      >
+        <div class="row text-align-end">
+          <div class="col">
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="prevCallback.emit()"
             >
-          </ng-container>
-
-          <!-- Action Column -->
-          <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-            <mat-cell class="py-4" *matCellDef="let bid">
-              <mat-radio-button
-                [value]="bid.option"
-                (change)="selectRow(bid.option)"
-                [checked]="selectedBid === bid.option"
-              ></mat-radio-button
-            ></mat-cell>
-          </ng-container>
-
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-        </mat-table>
-
-        <mat-paginator
-          #matpaginator
-          [pageSizeOptions]="[5, 10, 20]"
-          showFirstLastButtons
-          aria-label="Select page of changelogs"
-        >
-        </mat-paginator>
-      </mat-card>
-    </div>
-  </div>
+              Back
+            </button>
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="nextCallback.emit()"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </p-stepperPanel>
+  </p-stepper>
 </p-dialog>

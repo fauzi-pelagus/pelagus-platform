@@ -1,0 +1,98 @@
+<div class="container my-4">
+  <div class="row text-center mb-4">
+    <div class="col">
+      <h1>Operations dashboard</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-card class="p-4">
+        <mat-table [dataSource]="dataSource" matSort class="pb-5">
+          <!-- Order number Column -->
+          <ng-container matColumnDef="orderNumber">
+            <mat-header-cell *matHeaderCellDef>Order no.</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order">{{
+              order.orderNumber
+            }}</mat-cell>
+          </ng-container>
+
+          <!-- Item Column -->
+          <ng-container matColumnDef="item">
+            <mat-header-cell *matHeaderCellDef>Item</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order">
+              @for (item of order.items; track $index) {
+              <div class="row">
+                <div class="col">
+                  <div class="img-container p-3 me-3">
+                    <img
+                      mat-card-image
+                      [src]="item.image"
+                      alt="product image"
+                    />
+                  </div>
+                  <div>{{ item.title }}</div>
+                </div>
+              </div>
+
+              }</mat-cell
+            >
+          </ng-container>
+
+          <!-- Customer Column -->
+          <ng-container matColumnDef="customer">
+            <mat-header-cell *matHeaderCellDef>Customer</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order">
+              {{ order.customer }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Suppliers Column -->
+          <ng-container matColumnDef="suppliers">
+            <mat-header-cell *matHeaderCellDef>Suppliers</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order">
+              <mat-chip-set class="mb-2">
+                @for (suppliers of order.suppliers; track $index) {
+                <mat-chip>{{ suppliers }}</mat-chip>
+                }
+              </mat-chip-set>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Status</mat-header-cell
+            >
+            <mat-cell class="py-4" *matCellDef="let order"
+              ><mat-chip-set class="mb-2">
+                <mat-chip>{{ order.status }}</mat-chip>
+              </mat-chip-set></mat-cell
+            >
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+            <mat-cell class="py-4" *matCellDef="let order"
+              ><button mat-stroked-button color="primary">
+                {{ order.action }}
+              </button></mat-cell
+            >
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+
+        <mat-paginator
+          #matpaginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of changelogs"
+        >
+        </mat-paginator>
+      </mat-card>
+    </div>
+  </div>
+</div>

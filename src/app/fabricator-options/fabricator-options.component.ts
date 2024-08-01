@@ -5,8 +5,6 @@ import {
   ElementRef,
   Input,
 } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import 'ol/ol.css';
 import { Map, View } from 'ol';
 import { Tile as TileLayer, Vector as LayerVector } from 'ol/layer';
@@ -16,9 +14,13 @@ import { OSM, Vector as SourceVector } from 'ol/source';
 import { fromLonLat } from 'ol/proj';
 import { Icon, Style } from 'ol/style';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDivider } from '@angular/material/divider';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DialogModule } from 'primeng/dialog';
+import { StepperModule } from 'primeng/stepper';
 
 export interface locations {
   lon: number;
@@ -81,11 +83,13 @@ const ACTIVE_ORDERS: Bids[] = [
   standalone: true,
   imports: [
     MatTableModule,
-    MatPaginatorModule,
     MatChipsModule,
     MatCardModule,
-    MatRadioModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatDivider,
     DialogModule,
+    StepperModule,
   ],
   templateUrl: './fabricator-options.component.html',
   styleUrl: './fabricator-options.component.scss',
@@ -94,6 +98,7 @@ export class FabricatorOptionsComponent implements AfterViewInit {
   @ViewChild('mapContainer') mapContainer!: ElementRef;
   map!: Map;
   @Input() display: boolean = false;
+  private mapInitialized = false;
 
   center = fromLonLat([5.5697, 50.633]);
   supplierLocations = SUPPLIER_LOCATIONS;
@@ -116,7 +121,11 @@ export class FabricatorOptionsComponent implements AfterViewInit {
     }),
   });
 
-  ngAfterViewInit() {
+  private initializeMap(): void {
+    if (this.mapInitialized || !this.mapContainer) {
+      return;
+    }
+
     this.map = new Map({
       layers: [
         new TileLayer({
@@ -127,10 +136,16 @@ export class FabricatorOptionsComponent implements AfterViewInit {
       target: this.mapContainer.nativeElement,
       view: new View({
         center: this.center,
-        zoom: 2,
+        zoom: 1,
         maxZoom: 18,
       }),
     });
+
+    this.mapInitialized = true;
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeMap();
   }
 
   displayedColumns: string[] = [
@@ -142,8 +157,6 @@ export class FabricatorOptionsComponent implements AfterViewInit {
     'action',
   ];
   dataSource = new MatTableDataSource<any>(ACTIVE_ORDERS);
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   selectedBid: number | null = null;
 

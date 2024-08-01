@@ -1,6 +1,7 @@
 .map-container {
   width: 100%;
-  height: 400px;
+  height: 350px;
+  text-align: center;
 }
 
 mat-card,
@@ -10,6 +11,11 @@ mat-paginator {
   background-color: white;
 }
 
-mat-header-cell {
+mat-card-title {
   font-weight: bold;
+}
+
+mat-chip-option {
+  width: 100%;
+  height: 100%;
 }

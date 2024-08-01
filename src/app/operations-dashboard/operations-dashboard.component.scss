@@ -1,0 +1,22 @@
+mat-card,
+mat-card:hover,
+mat-table,
+mat-paginator {
+  background-color: white;
+}
+
+mat-card-title h3,
+mat-header-cell {
+  font-weight: bold;
+}
+
+.img-container {
+  background-color: #80808010;
+}
+
+.img-container img {
+  height: 100%;
+  width: 100%;
+  max-width: 60px;
+  object-fit: contain;
+}
