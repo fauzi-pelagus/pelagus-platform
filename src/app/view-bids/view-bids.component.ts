@@ -79,7 +79,7 @@ const ACTIVE_ORDERS: Bids[] = [
 ];
 
 @Component({
-  selector: 'app-fabricator-options',
+  selector: 'app-view-bids',
   standalone: true,
   imports: [
     MatTableModule,
@@ -91,10 +91,10 @@ const ACTIVE_ORDERS: Bids[] = [
     DialogModule,
     StepperModule,
   ],
-  templateUrl: './fabricator-options.component.html',
-  styleUrl: './fabricator-options.component.scss',
+  templateUrl: './view-bids.component.html',
+  styleUrl: './view-bids.component.scss',
 })
-export class FabricatorOptionsComponent implements AfterViewInit {
+export class ViewBidsComponent implements AfterViewInit {
   @ViewChild('mapContainer') mapContainer!: ElementRef;
   map!: Map;
   @Input() display: boolean = false;
@@ -137,7 +137,7 @@ export class FabricatorOptionsComponent implements AfterViewInit {
       view: new View({
         center: this.center,
         zoom: 1,
-        maxZoom: 18,
+        maxZoom: 1,
       }),
     });
 

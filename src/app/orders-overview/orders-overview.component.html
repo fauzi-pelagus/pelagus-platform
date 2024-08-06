@@ -6,79 +6,143 @@
   </div>
 
   <div class="row mb-5">
-    <div class="col-6">
-      <mat-card class="p-4">
-        <app-pie-chart></app-pie-chart>
-      </mat-card>
-    </div>
-  </div>
+    <mat-card class="p-4">
+      <div class="row mb-3">
+        <div class="col">
+          <h4>Quotes list</h4>
+        </div>
+      </div>
+      @for (quote of quotes; track $index) {
+      <div class="row px-3">
+        <div class="col px-3">
+          <div class="row">
+            <div class="col-auto img-container p-3 me-3">
+              <img mat-card-image [src]="quote.image" alt="product image" />
+            </div>
+            <div class="col">
+              <div class="mb-2">
+                <mat-chip>{{ quote.status }}</mat-chip>
+              </div>
 
-  <div class="row mb-3">
-    <div class="col">
-      <h4>Quotes list</h4>
-    </div>
+              <h5>
+                <b>{{ quote.orderNumber }}</b>
+              </h5>
+
+              <h6>
+                <small>Updated: 23/08/2024, 2:58PM</small>
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col px-3">
+          <div class="row py-1">
+            <div class="col"><small>No. of bids:</small></div>
+            <div class="col text-end">
+              <small><b>3</b></small>
+            </div>
+          </div>
+
+          <div class="row py-1">
+            <div class="col"><small>Price range (USD$):</small></div>
+            <div class="col text-end">
+              <small><b>12,089 - 24,670</b></small>
+            </div>
+          </div>
+
+          <div class="row py-1">
+            <div class="col"><small>Lead times (days):</small></div>
+            <div class="col text-end">
+              <small>><b>12 - 31</b></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p-timeline [value]="events" align="bottom" layout="horizontal">
+              <ng-template pTemplate="content" let-event>
+                <small>{{ event.status }}</small>
+              </ng-template>
+              <ng-template pTemplate="opposite" let-event>
+                <small>{{ event.date }}</small>
+              </ng-template>
+            </p-timeline>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider class="my-4"></mat-divider>
+      }
+    </mat-card>
   </div>
 
   <div class="row summary-container mb-5">
-    <div class="col">
-      <mat-card class="p-4">
-        <mat-card-title-group>
+    @for (order of orders; track $index) {
+    <mat-card class="p-4">
+      <div class="row align-items-center">
+        <div class="col">
+          <mat-chip-set class="mb-3">
+            <mat-chip>Bids received</mat-chip>
+          </mat-chip-set>
+        </div>
+      </div>
+      <mat-card-title-group>
+        <div class="col-4">
+          <div class="img-container p-3 me-3">
+            <img mat-card-image [src]="order.image" alt="product image" />
+          </div>
+        </div>
+        <div class="col">
           <mat-card-title class="mb-3"><h3>S24-2190</h3></mat-card-title>
           <mat-card-subtitle class="mb-3"
             ><h6>
               <small>Updated: 23/08/2024, 2:58PM</small>
             </h6></mat-card-subtitle
           >
-          <mat-chip-set class="mb-3">
-            <mat-chip>Bids received</mat-chip>
-          </mat-chip-set>
-        </mat-card-title-group>
+        </div>
+      </mat-card-title-group>
 
-        <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
 
-        <mat-card-content class="px-0 py-3">
-          <div class="row py-1">
-            <div class="col"><h6>No. of bids:</h6></div>
-            <div class="col text-end">
-              <h6><b>3</b></h6>
-            </div>
+      <mat-card-content class="px-0 py-3">
+        <div class="row py-1">
+          <div class="col"><h6>No. of bids:</h6></div>
+          <div class="col text-end">
+            <h6><b>3</b></h6>
           </div>
+        </div>
 
-          <div class="row py-1">
-            <div class="col"><h6>Price range (USD$):</h6></div>
-            <div class="col text-end">
-              <h6><b>12,089 - 24,670</b></h6>
-            </div>
+        <div class="row py-1">
+          <div class="col"><h6>Price range (USD$):</h6></div>
+          <div class="col text-end">
+            <h6><b>12,089 - 24,670</b></h6>
           </div>
+        </div>
 
-          <div class="row py-1">
-            <div class="col"><h6>Lead times (days):</h6></div>
-            <div class="col text-end">
-              <h6><b>12 - 31</b></h6>
-            </div>
+        <div class="row py-1">
+          <div class="col"><h6>Lead times (days):</h6></div>
+          <div class="col text-end">
+            <h6><b>12 - 31</b></h6>
           </div>
-        </mat-card-content>
+        </div>
+      </mat-card-content>
 
-        <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
 
-        <mat-card-actions class="py-3" align="end">
-          <button mat-icon-button class="mx-2">
-            <mat-icon>more_horiz</mat-icon>
-          </button>
+      <mat-card-actions class="py-3">
+        <p-timeline [value]="events" align="left">
+          <ng-template pTemplate="content" let-event>
+            <small>{{ event.date }}</small>
+          </ng-template>
+          <ng-template pTemplate="opposite" let-event>
+            <p-chip>{{ event.status }}</p-chip>
+          </ng-template>
+        </p-timeline>
 
-          <button
-            mat-flat-button
-            color="primary"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-            (click)="showDialog()"
-          >
-            View bids
-          </button>
-          <app-fabricator-options></app-fabricator-options>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+        <app-view-bids></app-view-bids>
+      </mat-card-actions>
+    </mat-card>
+    }
 
     <div class="col">
       <mat-card class="p-4">
@@ -144,6 +208,38 @@
   <div class="row mb-3">
     <div class="col">
       <h4>Active orders</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p-table [value]="orders"
+        ><ng-template pTemplate="header">
+          <tr>
+            <th>Order no.</th>
+            <th>Item</th>
+            <th>Price (USD$)</th>
+            <th>Lead time (days)</th>
+            <th>Status</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-order>
+          <tr>
+            <td>{{ order.orderNumber }}</td>
+            <td>
+              <span class="img-container p-3 me-3">
+                <img mat-card-image [src]="order.image" alt="product image" />
+              </span>
+              <span>{{ order.item }}</span>
+            </td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.leadTime }}</td>
+            <td>
+              <p-tag>{{ order.status }}</p-tag>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 
