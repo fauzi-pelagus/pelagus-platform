@@ -54,15 +54,7 @@ export class ViewPartComponent implements OnInit {
 
   selectedProduct: Product | undefined;
 
-  items: MenuItem[] | undefined;
-
-  home: MenuItem | undefined;
-
-  constructor(
-    private route: ActivatedRoute,
-    private confirmationService: ConfirmationService,
-    private messageService: MessageService
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id')!;

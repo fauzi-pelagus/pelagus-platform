@@ -1,0 +1,150 @@
+<div class="container p-4">
+  <div class="row text-center mb-4">
+    <div class="col">
+      <h1>View order</h1>
+    </div>
+  </div>
+
+  @if (selectedProduct) {
+  <div class="row">
+    <div class="col-md-4">
+      <mat-card appearance="outlined" class="p-4 mb-5">
+        <div class="row mb-4">
+          <div class="col-auto">
+            <mat-chip class="mb-3">{{ selectedProduct.status }}</mat-chip>
+            <mat-card-title class="mb-2">
+              <b>{{ selectedProduct.orderNumber }}</b>
+            </mat-card-title>
+            <mat-card-subtitle>
+              {{ selectedProduct.customer }}
+            </mat-card-subtitle>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-stepper orientation="vertical">
+              <mat-step state="chat">
+                <ng-template matStepLabel>Request bids</ng-template>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Receive bids</ng-template>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Submit quotation</ng-template>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Receive PO</ng-template>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Award supplier</ng-template>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Update supplier status</ng-template>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Upload quality documents</ng-template>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Mark as complete</ng-template>
+              </mat-step>
+            </mat-stepper>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-md-8">
+      @for (item of selectedProduct.items; track $index) {
+      <mat-expansion-panel class="mb-3">
+        <mat-expansion-panel-header class="p-4">
+          <div class="row mb-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="img-container p-3">
+                <img mat-card-image [src]="item.image" alt="product image" />
+              </div>
+            </div>
+            <div class="col">
+              <div class="row mb-2">
+                <div class="col">
+                  <mat-panel-title>
+                    <b>{{ item.title }}</b>
+                  </mat-panel-title>
+                </div>
+              </div>
+
+              <mat-panel-description class="flex-column align-items-start">
+                <div class="row">
+                  <div class="col-auto me-3">
+                    <p><b>Part number:</b> {{ item.partNumber }}</p>
+                  </div>
+                  <div class="col">
+                    <p>
+                      <b>Product number:</b>
+                      {{ item.productNumber }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-auto me-3">
+                    <p><b>Manufacturing tech:</b> {{ item.tech }}</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-auto me-3">
+                    <p class="mb-0">
+                      <b>Application details:</b>
+                    </p>
+                    <p class="mb-0">
+                      {{ item.applicationDetails }}
+                    </p>
+                  </div>
+                </div>
+              </mat-panel-description>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="row">
+          <div class="col">
+            <mat-tab-group>
+              <mat-tab label="Requirements">
+                <div class="row m-4">
+                  <div class="col p-0">
+                    <app-order-requirements></app-order-requirements>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <mat-tab label="Supplier selection"
+                ><div class="row m-4">
+                  <div class="col p-0">
+                    <app-supplier-selection></app-supplier-selection>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <mat-tab label="Quality review">
+                <div class="row m-4">
+                  <div class="col p-0"></div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </mat-expansion-panel>
+      }
+    </div>
+  </div>
+
+  }
+</div>

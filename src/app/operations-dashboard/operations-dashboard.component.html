@@ -75,8 +75,13 @@
           <ng-container matColumnDef="action">
             <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
             <mat-cell class="py-4" *matCellDef="let order"
-              ><button mat-stroked-button color="primary">
-                {{ order.action }}
+              ><button
+                mat-stroked-button
+                color="primary"
+                [routerLink]="['/operations-dashboard/view-order', order.id]"
+                routerLinkActive="active"
+              >
+                View order
               </button></mat-cell
             >
           </ng-container>

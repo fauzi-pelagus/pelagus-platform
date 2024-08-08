@@ -1,0 +1,37 @@
+.img-container {
+  background-color: #80808010;
+}
+
+.img-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+mat-card,
+mat-stepper,
+mat-expansion-panel,
+mat-expansion-panel-header,
+mat-expansion-panel-body {
+  background-color: white;
+}
+
+mat-expansion-panel,
+mat-expansion-panel-header,
+mat-expansion-panel-body {
+  height: fit-content !important;
+}
+
+mat-expansion-panel,
+mat-card {
+  box-shadow: none !important;
+  border: solid 1px #e5e5e5;
+}
+
+.vertical-divider-col {
+  width: 5.333333%;
+}
+
+.vertical-divider {
+  height: 100%;
+}

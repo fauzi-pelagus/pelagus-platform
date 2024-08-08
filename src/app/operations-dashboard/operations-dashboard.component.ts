@@ -1,51 +1,29 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  AfterViewInit,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
-import { MatDivider, MatDividerModule } from '@angular/material/divider';
-
-export interface Orders {
-  orderNumber: string;
-  items: any[];
-  qty: number;
-  price: number;
-  leadTime: number;
-  customer: string;
-  suppliers: string[];
-  status: string;
-  action: string;
-}
-
-const ACTIVE_ORDERS: Orders[] = [
-  {
-    orderNumber: 'S24-2189',
-    items: [
-      {
-        title: 'Close impeller for fresh water pump 1',
-        image: 'assets/img/impeller-1.png',
-      },
-      {
-        title: 'Close impeller for fresh water pump 2',
-        image: 'assets/img/impeller-2.png',
-      },
-    ],
-    qty: 1,
-    price: 12000,
-    leadTime: 30,
-    customer: 'John Doe',
-    suppliers: ['Supplier 1', 'Supplier 2', 'Supplier 3'],
-    status: 'In production',
-    action: 'View details',
-  },
-];
+import { MatDividerModule } from '@angular/material/divider';
+import { ViewOrderComponent } from '../view-order/view-order.component';
+import { Orders, ORDERS } from '../orders';
 
 @Component({
   selector: 'app-operations-dashboard',
   standalone: true,
   imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
     MatTableModule,
     MatSortModule,
     MatButtonModule,
@@ -59,7 +37,7 @@ const ACTIVE_ORDERS: Orders[] = [
   styleUrl: './operations-dashboard.component.scss',
 })
 export class OperationsDashboardComponent implements AfterViewInit {
-  orders = ACTIVE_ORDERS;
+  orders = ORDERS;
   displayedColumns: string[] = [
     'orderNumber',
     'item',
@@ -68,7 +46,7 @@ export class OperationsDashboardComponent implements AfterViewInit {
     'status',
     'action',
   ];
-  dataSource = new MatTableDataSource<any>(ACTIVE_ORDERS);
+  dataSource = new MatTableDataSource<any>(ORDERS);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -76,5 +54,12 @@ export class OperationsDashboardComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  @Input() order: any;
+  @Output() select = new EventEmitter<Orders>();
+
+  selectProduct() {
+    this.select.emit(this.order);
   }
 }

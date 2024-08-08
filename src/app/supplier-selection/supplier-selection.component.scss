@@ -1,0 +1,27 @@
+mat-table {
+  overflow: auto;
+}
+
+mat-table,
+mat-paginator {
+  background-color: white !important;
+}
+
+mat-header-cell {
+  font-weight: bold;
+}
+
+mat-header-cell,
+mat-cell {
+  min-width: 100px;
+}
+
+.mat-column-tech {
+  flex: 0 0 30%;
+}
+
+.mat-column-name,
+.mat-column-email,
+.mat-column-country {
+  flex: 1;
+}

@@ -1,18 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  OnDestroy,
-} from '@angular/core';
-import {
-  Router,
-  RouterOutlet,
-  RouterLink,
-  RouterLinkActive,
-  ActivatedRoute,
-} from '@angular/router';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { Product, PRODUCTS } from '../products';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
